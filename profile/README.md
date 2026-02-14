@@ -66,33 +66,38 @@ Repositories are organized across two organizations:
 
 | Repository | Description |
 |---|---|
-| **InVehicleCompute** | Dockerized edge gateway with MQTT broker, tile server, and local dashboards |
-| **PowerDistributionModule** | Vehicle power management hardware and firmware |
-| **KiCADLibraries** | Shared schematic symbols, PCB footprints, and 3D models |
-| **Documentation** | Architecture guides, setup instructions, and design decisions |
-| **OtaUpdateLibrary** | Over-the-air firmware update library for ESP32 WROOM-32 |
-| **TwaiTaskBasedLibrary** | FreeRTOS task-based CAN (TWAI) driver for ESP32 |
-| **ESP32ArduinoDebugLibrary** | Debugging utilities for ESP32 Arduino development |
-| **Esp32C6 Libraries** | OTA update, CAN driver, and RGB LED libraries for ESP32-C6 |
+| **[InVehicleCompute](https://github.com/trailcurrentoss/TrailCurrentInVehicleCompute)** | Dockerized edge gateway with MQTT broker, tile server, and local dashboards |
+| **[PowerDistributionModule](https://github.com/trailcurrentoss/TrailCurrentPowerDistributionModule)** | Vehicle power management hardware and firmware |
+| **[KiCADLibraries](https://github.com/trailcurrentoss/TrailCurrentKiCADLibraries)** | Shared schematic symbols, PCB footprints, and 3D models |
+| **[Documentation](https://github.com/trailcurrentoss/TrailCurrentDocumentation)** | Architecture guides, setup instructions, and design decisions |
+| **[OtaUpdateLibraryWROOM32](https://github.com/trailcurrentoss/OtaUpdateLibraryWROOM32)** | Over-the-air firmware update library for ESP32 WROOM-32 |
+| **[TwaiTaskBasedLibraryWROOM32](https://github.com/trailcurrentoss/TwaiTaskBasedLibraryWROOM32)** | FreeRTOS task-based CAN (TWAI) driver for ESP32 |
+| **[ESP32ArduinoDebugLibrary](https://github.com/trailcurrentoss/ESP32ArduinoDebugLibrary)** | Debugging utilities for ESP32 Arduino development |
+| **[Esp32C6OtaUpdateLibrary](https://github.com/trailcurrentoss/Esp32C6OtaUpdateLibrary)** | Over-the-air firmware update library for ESP32-C6 |
+| **[Esp32C6TwaiTaskBasedLibrary](https://github.com/trailcurrentoss/Esp32C6TwaiTaskBasedLibrary)** | FreeRTOS task-based CAN (TWAI) driver for ESP32-C6 |
+| **[C6SuperMiniRgbLedLibrary](https://github.com/trailcurrentoss/C6SuperMiniRgbLedLibrary)** | RGB LED status indicator driver for ESP32-C6 Super Mini |
 
 ### Application Layer
 
 | Repository | Description |
 |---|---|
-| **CanEspNowGateway** | CAN bus to ESP-NOW wireless bridge |
-| **GnssModule** | GPS/GNSS positioning module firmware |
-| **AirQualityModule** | Environmental air quality sensor firmware |
-| **BtGateway** | Bluetooth gateway for sensor aggregation |
-| **VehicleLeveler** | Accelerometer-based vehicle leveling system |
-| **ShuntGateway** | Current shunt monitoring for battery systems |
-| **SevenPinTrailerMonitor** | Standard trailer connector monitoring |
-| **MpptCanGateway** | Solar charge controller CAN integration |
-| **CabinetAndDoorSensor** | Magnetic reed switch monitoring |
-| **EightButtonPanel** | Multi-function control panel hardware and firmware |
-| **ElectricHeaterControl** | Heater control system hardware and firmware |
-| **TrailCurrentCloud** | Cloud backend services |
-| **TrailCurrentAndroidApp** | Native Android monitoring and control application |
-| **Display Projects** | In-vehicle, wall-mounted, and remote display firmware |
+| **[CanEspNowGateway](https://github.com/trailcurrentoss/TrailCurrentCanEspNowGateway)** | CAN bus to ESP-NOW wireless bridge |
+| **[GnssModule](https://github.com/trailcurrentoss/TrailCurrentGnssModule)** | GPS/GNSS positioning module firmware |
+| **[AirQualityModule](https://github.com/trailcurrentoss/TrailCurrentAirQualityModule)** | Environmental air quality sensor firmware |
+| **[BtGateway](https://github.com/trailcurrentoss/TrailCurrentBtGateway)** | Bluetooth gateway for sensor aggregation |
+| **[VehicleLeveler](https://github.com/trailcurrentoss/TrailCurrentVehicleLeveler)** | Accelerometer-based vehicle leveling system |
+| **[ShuntGateway](https://github.com/trailcurrentoss/TrailCurrentShuntGateway)** | Current shunt monitoring for battery systems |
+| **[SevenPinTrailerMonitor](https://github.com/trailcurrentoss/TrailCurrentSevenPinTrailerMonitor)** | Standard trailer connector monitoring |
+| **[MpptCanGateway](https://github.com/trailcurrentoss/TrailCurrentMpptCanGateway)** | Solar charge controller CAN integration |
+| **[CabinetAndDoorSensor](https://github.com/trailcurrentoss/TrailCurrentCabinetAndDoorSensor)** | Magnetic reed switch monitoring |
+| **[EightButtonPanel](https://github.com/trailcurrentoss/TrailCurrentEightButtonPanel)** | Multi-function control panel hardware and firmware |
+| **[ElectricHeaterControl](https://github.com/trailcurrentoss/TrailCurrentElectricHeaterControl)** | Heater control system hardware and firmware |
+| **[InVehicleTrailerMonitoring](https://github.com/trailcurrentoss/TrailCurrentInVehicleTrailerMonitoring)** | In-vehicle trailer monitoring display firmware |
+| **[TrailCurrentCloud](https://github.com/trailcurrentoss/TrailCurrentCloud)** | Cloud backend services |
+| **[TrailCurrentAndroidApp](https://github.com/trailcurrentoss/TrailCurrentAndroidApp)** | Native Android monitoring and control application |
+| **[WaveshareEsp32s3Remote](https://github.com/trailcurrentoss/TrailCurrentWaveshareEsp32s3Remote)** | ESP32-S3 4.3" touchscreen remote control |
+| **[WallMountedDisplay](https://github.com/trailcurrentoss/TrailCurrentWallMountedDisplay)** | Wall-mounted status display |
+| **[WallMountedDisplaySunton7Inch](https://github.com/trailcurrentoss/TrailCurrentWallMountedDisplaySunton7Inch)** | 7-inch Sunton wall-mounted display |
 
 ---
 
