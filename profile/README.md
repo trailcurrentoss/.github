@@ -21,6 +21,8 @@ TrailCurrent takes the opposite approach:
 
 ## Architecture
 
+See the [interactive architecture overview](https://trailcurrent.com/architecture.html) for a visual walkthrough of the full system.
+
 TrailCurrent spans the full autonomous systems stack:
 
 ```
