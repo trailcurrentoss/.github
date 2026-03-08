@@ -1,41 +1,3 @@
-# TrailCurrent
-
-**An open-source Software Defined Vehicle platform built on edge-first autonomous intelligence.**
-
-TrailCurrent is a complete, production-grade system architecture for intelligent vehicle and mobile platform management. From embedded microcontrollers on a CAN bus to cloud backends and mobile applications, TrailCurrent demonstrates how autonomous systems should work: local-first, offline-capable, and with data ownership in the hands of the user.
-
----
-
-## Why TrailCurrent Exists
-
-Most connected vehicle and IoT platforms assume persistent cloud connectivity. They ship your data upstream, process it remotely, and send decisions back down. This creates latency, privacy exposure, single points of failure, and a fundamental loss of control.
-
-TrailCurrent takes the opposite approach:
-
-- **Edge-first intelligence** -- Decisions happen locally, at the point of action, not in a distant data center.
-- **Offline-capable by design** -- The system works without internet. Cloud is an enhancement, not a dependency.
-- **Data sovereignty** -- Your telemetry, your sensors, your data. It stays with you unless you choose otherwise.
-- **Full-stack transparency** -- Hardware schematics, firmware, gateway software, cloud services, and mobile apps are all open source.
-
----
-
-## Architecture
-
-See the [interactive architecture overview](https://trailcurrent.com/architecture.html) for a visual walkthrough of the full system.
-
-TrailCurrent spans the full autonomous systems stack:
-
-```
- Hardware Modules (ESP32 / ESP32-C6)
-        |
-     CAN Bus
-        |
- Edge Gateway (MQTT / Docker / Node.js)
-        |
-     Cloud Backend (Node.js / PostgreSQL)
-        |
-     Mobile App (Kotlin / Jetpack Compose)
-```
 
 ### Hardware & Firmware
 
@@ -43,7 +5,7 @@ Custom PCBs designed in KiCAD with ESP32-based firmware written in C++ using Pla
 
 - Vehicle power distribution and monitoring
 - GNSS positioning
-- Air quality sensing
+- Environmental sensing (temperature, humidity, TVOC, eCO2)
 - Trailer monitoring (seven-pin interface, leveling, shunt current)
 - MPPT solar charge controller integration
 - Cabinet and door sensors
@@ -52,11 +14,15 @@ Custom PCBs designed in KiCAD with ESP32-based firmware written in C++ using Pla
 
 ### Edge Gateway
 
-A Dockerized compute platform that runs inside the vehicle. Aggregates sensor data via MQTT, serves local dashboards with offline map tiles, and synchronizes selectively with cloud services when connectivity is available.
+Headwaters is a Dockerized compute platform that runs on a Raspberry Pi 5 inside the vehicle. It orchestrates Mosquitto MQTT, Node-RED, MongoDB, a tile server, and a MapLibre-based frontend. It aggregates sensor data, serves local dashboards with offline map tiles, and synchronizes selectively with cloud services when connectivity is available. BuildRoot provides a custom Linux SD card image for the Raspberry Pi 5 target.
+
+### Voice Assistant
+
+Peregrine is a fully offline voice assistant running on a Radxa Dragon Q6A. It chains wake word detection, speech-to-text, a local LLM, and text-to-speech into an entirely local pipeline, with MQTT integration for device control.
 
 ### Cloud & Mobile
 
-A Node.js backend with PostgreSQL for optional remote access and fleet-level visibility. A native Android application built with Kotlin and Jetpack Compose provides real-time monitoring and control.
+A Node.js backend with PostgreSQL for optional remote access and fleet-level visibility. A native Android application built with Kotlin and Jetpack Compose, and a cross-platform React Native application, provide real-time monitoring and control.
 
 ---
 
@@ -68,7 +34,8 @@ Repositories are organized across two organizations:
 
 | Repository | Description |
 |---|---|
-| **[InVehicleCompute](https://github.com/trailcurrentoss/TrailCurrentInVehicleCompute)** | Dockerized edge gateway with MQTT broker, tile server, and local dashboards |
+| **[Headwaters](https://github.com/trailcurrentoss/TrailCurrentHeadwaters)** | Dockerized edge gateway with MQTT broker, Node-RED, tile server, and local dashboards |
+| **[BuildRoot](https://github.com/trailcurrentoss/TrailCurrentBuildRoot)** | Buildroot external configuration for Raspberry Pi 5 Linux SD card images |
 | **[PowerDistributionModule](https://github.com/trailcurrentoss/TrailCurrentPowerDistributionModule)** | Vehicle power management hardware and firmware |
 | **[KiCADLibraries](https://github.com/trailcurrentoss/TrailCurrentKiCADLibraries)** | Shared schematic symbols, PCB footprints, and 3D models |
 | **[Documentation](https://github.com/trailcurrentoss/TrailCurrentDocumentation)** | Architecture guides, setup instructions, and design decisions |
@@ -85,7 +52,7 @@ Repositories are organized across two organizations:
 |---|---|
 | **[CanEspNowGateway](https://github.com/trailcurrentoss/TrailCurrentCanEspNowGateway)** | CAN bus to ESP-NOW wireless bridge |
 | **[GnssModule](https://github.com/trailcurrentoss/TrailCurrentGnssModule)** | GPS/GNSS positioning module firmware |
-| **[AirQualityModule](https://github.com/trailcurrentoss/TrailCurrentAirQualityModule)** | Environmental air quality sensor firmware |
+| **[Borealis](https://github.com/trailcurrentoss/TrailCurrentBorealis)** | ESP32-S3 environmental sensor (temperature, humidity, TVOC, eCO2) |
 | **[BtGateway](https://github.com/trailcurrentoss/TrailCurrentBtGateway)** | Bluetooth gateway for sensor aggregation |
 | **[VehicleLeveler](https://github.com/trailcurrentoss/TrailCurrentVehicleLeveler)** | Accelerometer-based vehicle leveling system |
 | **[ShuntGateway](https://github.com/trailcurrentoss/TrailCurrentShuntGateway)** | Current shunt monitoring for battery systems |
@@ -94,9 +61,10 @@ Repositories are organized across two organizations:
 | **[CabinetAndDoorSensor](https://github.com/trailcurrentoss/TrailCurrentCabinetAndDoorSensor)** | Magnetic reed switch monitoring |
 | **[EightButtonPanel](https://github.com/trailcurrentoss/TrailCurrentEightButtonPanel)** | Multi-function control panel hardware and firmware |
 | **[ElectricHeaterControl](https://github.com/trailcurrentoss/TrailCurrentElectricHeaterControl)** | Heater control system hardware and firmware |
-| **[InVehicleTrailerMonitoring](https://github.com/trailcurrentoss/TrailCurrentInVehicleTrailerMonitoring)** | In-vehicle trailer monitoring display firmware |
+| **[Peregrine](https://github.com/davidrfloydii/TrailCurrentPeregrine)** | Offline voice assistant with MQTT device control |
 | **[TrailCurrentCloud](https://github.com/trailcurrentoss/TrailCurrentCloud)** | Cloud backend services |
 | **[TrailCurrentAndroidApp](https://github.com/trailcurrentoss/TrailCurrentAndroidApp)** | Native Android monitoring and control application |
+| **[TrailCurrentReactNativeApp](https://github.com/trailcurrentoss/TrailCurrentReactNativeApp)** | Cross-platform React Native monitoring and control application |
 | **[WaveshareEsp32s3Remote](https://github.com/trailcurrentoss/TrailCurrentWaveshareEsp32s3Remote)** | ESP32-S3 4.3" touchscreen remote control |
 | **[WallMountedDisplay](https://github.com/trailcurrentoss/TrailCurrentWallMountedDisplay)** | Wall-mounted status display |
 | **[WallMountedDisplaySunton7Inch](https://github.com/trailcurrentoss/TrailCurrentWallMountedDisplaySunton7Inch)** | 7-inch Sunton wall-mounted display |
@@ -117,15 +85,16 @@ Repositories are organized across two organizations:
 
 ## Getting Started
 
-Each repository includes its own README with setup instructions. For a system-level overview, start with the **Documentation** repository. For the edge computing platform, see **InVehicleCompute**. For hardware designs, browse the individual module repositories and reference **KiCADLibraries** for shared assets.
+Each repository includes its own README with setup instructions. For a system-level overview, start with the **Documentation** repository. For the edge computing platform, see **Headwaters**. For the Raspberry Pi 5 base image, see **BuildRoot**. For hardware designs, browse the individual module repositories and reference **KiCADLibraries** for shared assets.
 
 ### Prerequisites
 
 - **Firmware development:** PlatformIO, ESP-IDF toolchain
-- **Edge gateway:** Docker, Docker Compose
+- **Edge gateway:** Docker, Docker Compose, Raspberry Pi 5
+- **Base image:** Buildroot 2024.02.12
 - **Cloud services:** Node.js, PostgreSQL
 - **Hardware design:** KiCAD 8+
-- **Mobile app:** Android Studio, Kotlin
+- **Mobile apps:** Android Studio (Kotlin), Expo / React Native (TypeScript)
 
 ---
 
